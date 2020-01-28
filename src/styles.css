@@ -1,0 +1,11 @@
+.sliderko-component {
+  width: 100%;
+  overflow-x: hidden;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+}
+
+.sliderko-component-mobile {
+  overflow-x: auto;
+}
