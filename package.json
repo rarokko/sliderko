@@ -8,6 +8,14 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
+  "keywords": [
+    "slider",
+    "carousel",
+    "swipe",
+    "swiper", 
+    "horizontal scroll",
+    "horizontal scrolling"
+  ],
   "engines": {
     "node": ">=8",
     "npm": ">=5"
