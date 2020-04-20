@@ -53,6 +53,7 @@ export default class Sliderko extends Component {
               onMouseUp={(evt) => this.onMouseUp(evt)}
               onMouseLeave={(evt) => this.onMouseUp(evt)}
               className={styles[`sliderko-component`]}
+              style={this.props.style}
           >
               {this.props.children}
           </div>
