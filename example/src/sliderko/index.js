@@ -30,6 +30,7 @@ export default class Sliderko extends Component {
     this.div.current.addEventListener("scroll", () => this.handleScroll(), false);
 
     this.toggleBetweenMobileAndDesk.call(this);
+    this.handleInfinite();
   }
 
   handleScroll() {
@@ -46,11 +47,30 @@ export default class Sliderko extends Component {
     const rightCheck = clientWidth + scrollLeft;
 
     if (rightCheck >= offsetLeft) {
-      [...this.div.current.childNodes].forEach((item) => {
+      [...this.div.current.childNodes].reverse().forEach((item) => {
         if (!(item == lastChild)) {
           let clone = item.cloneNode(true);
           this.div.current.appendChild(clone);
         }
+      })
+    };
+
+    const firstElementChild = this.div.current.firstElementChild;
+    const firstElementChildClientWidth = firstElementChild.clientWidth;
+    const leftCheck = firstElementChildClientWidth * 2;
+
+    if (scrollLeft <= leftCheck) {
+      [...this.div.current.childNodes].reverse().some((item) => {
+
+        if ((item == firstElementChild)) { 
+          return true
+        }
+
+        let clone = item.cloneNode(true);
+        this.div.current.insertBefore(clone, this.div.current.firstElementChild);
+        const scroll = item.clientWidth + 32;
+
+        this.div.current.scrollLeft += scroll;
       })
     };
   }
