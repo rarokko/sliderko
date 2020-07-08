@@ -6,6 +6,8 @@ export default class Sliderko extends Component {
   constructor() {
       super();
 
+      console.log("aee");
+
       this.div = React.createRef();
       this.mouseInitialX = 0;
       this.moving = false;
@@ -23,7 +25,12 @@ export default class Sliderko extends Component {
 
   componentDidMount() {
       window.addEventListener("resize", () => this.toggleBetweenMobileAndDesk(), false);
+      window.addEventListener("scroll", () => this.handleScroll(), false);
       this.toggleBetweenMobileAndDesk.call(this);
+  }
+
+  handleScroll() {
+      console.log("aee");
   }
 
   onMouseDown(evt) {
@@ -33,6 +40,8 @@ export default class Sliderko extends Component {
 
   onMouseMove(evt) {
       if (this.moving == false) return;
+
+      this.handleScroll();
 
       let currentXPosition = evt.clientX;
       let moveCalc = this.mouseInitialX - currentXPosition;
